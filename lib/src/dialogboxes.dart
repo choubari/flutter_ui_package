@@ -12,7 +12,7 @@ enum ButtonsAlignement{
   CENTER,
 }
 // return a Widget array of buttons according to buttons (success, dismiss) input texts
-List<Widget> AddButtons(BuildContext context, ButtonsPosition buttonsPosition, String successText, VoidCallback onSuccessPressed, String dismissText, VoidCallback onDismissPressed, Color backgroundColor, Color themeColor){
+List<Widget> AddButtons(BuildContext context, ButtonsPosition buttonsPosition, double buttonsWidth, String successText, VoidCallback onSuccessPressed, String dismissText, VoidCallback onDismissPressed, Color backgroundColor, Color themeColor){
   TextStyle successtextstyle= new TextStyle(fontSize: 17 , fontWeight: FontWeight.w800, color: backgroundColor);
   TextStyle dismisstextstyle= new TextStyle(fontSize: 17 , fontWeight: FontWeight.w800, color: themeColor);
   if (successText.isEmpty && dismissText.isEmpty){
@@ -21,7 +21,7 @@ List<Widget> AddButtons(BuildContext context, ButtonsPosition buttonsPosition, S
     if (successText.isNotEmpty && dismissText.isNotEmpty){
       return [
         BOutlined(
-          width: getButtonsWidth(context, buttonsPosition),
+          width: buttonsWidth,
           height: 45,
           text: dismissText,
           textStyle: dismisstextstyle,
@@ -34,7 +34,7 @@ List<Widget> AddButtons(BuildContext context, ButtonsPosition buttonsPosition, S
           height: 10,
         ),
         BFilled(
-          width: getButtonsWidth(context, buttonsPosition),
+          width: buttonsWidth,
           height: 45,
           text: successText,
           textStyle: successtextstyle,
@@ -45,7 +45,7 @@ List<Widget> AddButtons(BuildContext context, ButtonsPosition buttonsPosition, S
     }else{
       if (successText.isNotEmpty)  return [
         BFilled(
-          width: getButtonsWidth(context, buttonsPosition),
+          width: buttonsWidth,
           height: 45,
           text: successText,
           textStyle: successtextstyle,
@@ -55,7 +55,7 @@ List<Widget> AddButtons(BuildContext context, ButtonsPosition buttonsPosition, S
        ];
       else return [
         BOutlined(
-          width: getButtonsWidth(context, buttonsPosition),
+          width: buttonsWidth,
           height: 45,
           text: dismissText,
           textStyle: dismisstextstyle,
@@ -70,15 +70,19 @@ List<Widget> AddButtons(BuildContext context, ButtonsPosition buttonsPosition, S
 // place buttons on a row or colum according to buttonsPosition value (HORIZONTAL, VERTICAL)
 Widget PlaceButtons(ButtonsPosition position, List<Widget> array, ButtonsAlignement alignement){
   MainAxisAlignment mainAxisAlignment;
+  CrossAxisAlignment crossAxisAlignment;
   switch (alignement){
     case ButtonsAlignement.CENTER:
       mainAxisAlignment= MainAxisAlignment.center;
+      crossAxisAlignment = CrossAxisAlignment.center;
       break;
     case ButtonsAlignement.LEFT:
       mainAxisAlignment= MainAxisAlignment.start;
+      crossAxisAlignment = CrossAxisAlignment.start;
       break;
     case ButtonsAlignement.RIGHT:
       mainAxisAlignment= MainAxisAlignment.end;
+      crossAxisAlignment= CrossAxisAlignment.end;
       break;
   }
   if (array.isEmpty){
@@ -97,7 +101,8 @@ Widget PlaceButtons(ButtonsPosition position, List<Widget> array, ButtonsAlignem
       return Padding(
         padding: const EdgeInsets.only(top: 20),
         child: Column(
-          mainAxisAlignment: mainAxisAlignment,
+          crossAxisAlignment: crossAxisAlignment,
+          //mainAxisAlignment: mainAxisAlignment,
           children: array,
         ),
       );
@@ -118,6 +123,7 @@ double getButtonsWidth(BuildContext context, ButtonsPosition position){
 // Dialog Box with customizable widget between title and description
 class BasicAlertBox {
   double dialogRadius;
+  double buttonsWidth;
   Color themeColor, backgroundColor;
   String title, description;
   String successText, dismissText;
@@ -126,7 +132,8 @@ class BasicAlertBox {
   ButtonsAlignement buttonsAlignement;
   VoidCallback onSuccessPressed, onDismissPressed;
   BasicAlertBox({
-    this.dialogRadius= 0,
+    this.dialogRadius= 7,
+    this.buttonsWidth,
     this.themeColor= Colors.blue,
     this.backgroundColor = Colors.white,
     this.title = "Alert Dialog",
@@ -144,6 +151,7 @@ class BasicAlertBox {
     @required BuildContext context,
   }) {
     assert(context != null, "context is null!");
+    if (buttonsWidth==null) buttonsWidth=getButtonsWidth(context, buttonsPosition);
     TextStyle titletext= new TextStyle(fontSize: 26 , fontWeight: FontWeight.w700, color: themeColor);
     TextStyle descriptiontext= new TextStyle(fontSize: 14 , fontWeight: FontWeight.w400, color: Colors.black);
     return showDialog(
@@ -164,7 +172,7 @@ class BasicAlertBox {
                 Text(description, style: descriptiontext, textAlign: TextAlign.center,),
                 PlaceButtons(
                   buttonsPosition,
-                  AddButtons(context, buttonsPosition, successText, onSuccessPressed, dismissText, onDismissPressed, backgroundColor, themeColor),
+                  AddButtons(context, buttonsPosition, buttonsWidth, successText, onSuccessPressed, dismissText, onDismissPressed, backgroundColor, themeColor),
                   buttonsAlignement
                 ),
 
@@ -180,6 +188,7 @@ class BasicAlertBox {
 // Dialog with Widget half in half out the box
 class StackAlertBox {
   double dialogRadius;
+  double buttonsWidth;
   Color themeColor, backgroundColor, circleColor;
   String title, description;
   String successText, dismissText;
@@ -189,7 +198,8 @@ class StackAlertBox {
   VoidCallback onSuccessPressed, onDismissPressed;
 
   StackAlertBox({
-    this.dialogRadius = 0,
+    this.dialogRadius = 7,
+    this.buttonsWidth,
     this.themeColor= Colors.blue,
     this.backgroundColor = Colors.white,
     this.title = "Alert Dialog",
@@ -210,11 +220,13 @@ class StackAlertBox {
     assert(context != null, "context is null!");
     TextStyle titletext= new TextStyle(fontSize: 26 , fontWeight: FontWeight.w700, color: themeColor);
     TextStyle descriptiontext= new TextStyle(fontSize: 14 , fontWeight: FontWeight.w400, color: Colors.black);
+    if (buttonsWidth==null) buttonsWidth=getButtonsWidth(context, buttonsPosition);
     return showDialog(
         context: context,
         builder: (context) {
           return Dialog(
             backgroundColor: Colors.transparent,
+            elevation: 0,
             child: Stack(children: <Widget>[
               Container(
                 margin: EdgeInsets.only(top: 50),
@@ -227,11 +239,11 @@ class StackAlertBox {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(title, style: titletext, textAlign: TextAlign.center,),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 10,width: 0,),
                     Text(description, style: descriptiontext, textAlign: TextAlign.center,),
                     PlaceButtons(
                       buttonsPosition,
-                      AddButtons(context, buttonsPosition, successText, onSuccessPressed, dismissText, onDismissPressed, backgroundColor, themeColor),
+                      AddButtons(context, buttonsPosition, buttonsWidth, successText, onSuccessPressed, dismissText, onDismissPressed, backgroundColor, themeColor),
                       buttonsAlignement
                     ),
                   ],

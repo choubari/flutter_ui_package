@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class Entry1 extends StatelessWidget {
   String title, hint;
   Color outlineColor;
-  double radius;
+  double radius, outlineThikness;
   bool isPassword;
 
   Entry1({
@@ -12,13 +12,14 @@ class Entry1 extends StatelessWidget {
     this.hint= "hint",
     this.outlineColor = Colors.blue,
     this.radius = 10,
+    this.outlineThikness=2,
     this.isPassword = false
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -33,11 +34,11 @@ class Entry1 extends StatelessWidget {
             obscureText: isPassword,
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: outlineColor, width: 2.0),
+                borderSide: BorderSide(color: outlineColor, width: outlineThikness),
                 borderRadius: BorderRadius.all(Radius.circular(radius)),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: outlineColor, width: 2.0),
+                borderSide: BorderSide(color: outlineColor, width: outlineThikness),
                 borderRadius: BorderRadius.all(Radius.circular(radius)),
               ),
               hintText: hint,
