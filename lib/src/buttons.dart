@@ -52,7 +52,7 @@ class BFilled extends StatelessWidget {
   Position alignment;
   BFilled({
     this.width =100,
-    this.height= 20,
+    this.height= 50,
     this.radius = 7,
     this.text = "",
     this.textStyle= const TextStyle(fontSize: 18 , fontWeight: FontWeight.w700, color: Colors.white),
@@ -102,7 +102,7 @@ class BOutlined extends StatelessWidget {
 
   BOutlined({
     this.width =100,
-    this.height= 20,
+    this.height= 50,
     this.radius = 7,
     this.text = "",
     this.textStyle= const TextStyle(fontSize: 18 , fontWeight: FontWeight.w700, color: Colors.white),
@@ -155,7 +155,7 @@ class BRaised extends StatelessWidget {
 
   BRaised ({
     this.width =100,
-    this.height= 20,
+    this.height= 50,
     this.radius = 7,
     this.text = "",
     this.textStyle= const TextStyle(fontSize: 18 , fontWeight: FontWeight.w700, color: Colors.white),
