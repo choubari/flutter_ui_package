@@ -2,7 +2,7 @@
 
 A beautiful package for most used UI components, fully customizable .
 
-The code is **100% Dart** and everything resides in the [/lib](/tree/master/lib) folder.
+The code is **100% Dart** and everything resides in the [/lib](/lib) folder.
 
 # Installation
 
@@ -24,10 +24,6 @@ dependencies:
 Then run ``flutter packages get`` .
 
 
-## Example Project
-
-There is a detailled example project in the ``example`` folder. You can directly run and play on it. There are code snippets from example project below.
-
 ## Usage 
 
 **Import this class :**
@@ -36,33 +32,44 @@ There is a detailled example project in the ``example`` folder. You can directly
 import 'package:flutteruipackage/flutteruipackage.dart';
 ```
 
+
+
+## Example Project
+
+There is a detailled example project in the ``example`` folder. You can directly run and play on it. There are code snippets from example project below.
+
+
 ## Table of Content :
 
-[Buttons](#)
-* [Filled Buttons](#)
-* [Outlined Buttons](#)
-* [Raised Buttons](#)
-[Alert Dialogs](#)
-* [Basic Alert Dialog](#)
-* [Stack Alert Dialog](#)
-[Input Field](#)
-[Dropdowns](#)
-* [Material Dropdown](#)
-* [Classic Dropdown](#)
-* [Material Popup](#)
-* [Dots Menu](#)
-* [Awesome Menu](#)
+* [Buttons](#buttons-)
+    * [Filled Buttons](#filledbutton)
+    * [Outlined Buttons](#outlinedbutton)
+    * [Raised Buttons](#raisedbutton)
+
+* [Alert Dialogs](#alert-dialogs-)
+    * [Basic Alert Dialog](#basicalertbox)
+    * [Stack Alert Dialog](#stackalertbox)
+
+* [Input Field](#input-fields-)
+
+* [Dropdowns](#dropdowns-)
+    * [Material Dropdown](#materialdropdown)
+    * [Classic Dropdown](#classicdropdown)
+    * [Material Popup](#materialpopup)
+    * [Dots Menu](#dotsmenu)
+    * [Awesome Menu](#awesomemenu)
+
 
 
 
 ## Buttons :
 
-Every type of button support text with and without icon.
+Every type of button support text content with or without icon. The buttons are fully customizable, you can play with textStyle, alignment, width, height, icon color, space between icon and text, and much more ... 
 
 
 #### FilledButton 
 
-<img src="/screenshots/BFilled.png" align = "right" height = "350" alt="filled button flutter">
+<img src="/screenshots/BFilled.png" align = "right" height = "250" alt="filled button flutter">
 
 ```dart 
 BFilled(
@@ -97,13 +104,13 @@ BFilled(
 
 <br/>
 <div align="right">
-    <b><a href="#table-of-content">↥ back to top</a></b>
+    <b><a href="#table-of-content-">↥ back to top</a></b>
 </div>
 <br/>
 
 #### OutlinedButton 
 
-<img src="/screenshots/BOutlined.png" align = "right" height = "350" alt="outlined button flutter">
+<img src="/screenshots/BOutlined.png" align = "left" height = "190" alt="outlined button flutter">
 
 ```dart 
 BOutlined(
@@ -126,10 +133,15 @@ BOutlined(
     onPressed: () {},
 ),
 ```
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
 
 #### RaisedButton
 
-<img src="/screenshots/BRaised.png" align = "right" height = "350" alt="raised button flutter">
+<img src="/screenshots/BRaised.png" align = "right" height = "200" alt="raised button flutter">
 
 ```dart 
 BRaised(
@@ -159,11 +171,16 @@ BRaised(
     onPressed: () {},
 ),
 ```
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
 
 
 ## Alert Dialogs :
 
-To create an alert dialog, you need to instantiate a new object and call the show method. There are two types of alert dialogs : BasicAlertBox and StackAlertBox. The main deifference is the second one contain a widget that pops up from the canva of the dialog.
+To create an alert dialog, you need to instantiate a new object and call the show method. There are two types of alert dialogs : BasicAlertBox and StackAlertBox. The main difference is that the second one contains a widget (image, icon ..) that pops up from the canva of the dialog while on the first dialog, the widget is inserted between the title and the description .
 
 A dialog can contain zero, one or two buttons. If you don't want a button on your dialog ignore _successText, dismissTest, onSucceessPressed and onDismissPressed_ , but if you want just one button, you can choose between a filled or an outlined button. The _successText_ parameter allows you to have a filled button and the _dismissText_ parameter shows an outlined button. To configure their colors, modify _themeColor_ . Don't forget to fill _onSuccessPressed_ or _onDismissPressed_ when you add a success or dismiss button.  
 
@@ -171,7 +188,7 @@ When you are using one button on a dialog you can modify _buttonsAlignement_ to 
 
 #### BasicAlertBox
 
-<img src="/screenshots/nobuttonDialog.png" align = "right" height = "350" alt="alert dialog flutter">
+<img src="/screenshots/nobuttonDialog.png" align = "right" height = "170" alt="alert dialog flutter">
 
 ```dart 
 BasicAlertBox(
@@ -184,13 +201,19 @@ BasicAlertBox(
 ).show(context: context);
 ```
 
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
+
 For a two buttons dialog, you can choose their alignements : **Horizontally** or **Vertically** .
 
-<img src="/screenshots/horizontalbuttonsDialog.png" align = "right" height = "350" alt="alert dialog flutter">
+<img src="/screenshots/horizontalbuttonsDialog.png" align = "left" height = "350" alt="alert dialog flutter">
 
 ```dart 
 BasicAlertBox(
-    imageWidget: //A widget that will be placed between title and description 
+    imageWidget: //this widget will be placed between title and description 
         Image.network(
             "https://cdn.dribbble.com/users/146798/screenshots/2933118/rocket.gif",
             width: 150,
@@ -210,8 +233,12 @@ BasicAlertBox(
     },
 ).show(context: context);
 ```
-
-<img src="/screenshots/verticalbuttonsDialog.png" align = "right" height = "350" alt="alert dialog flutter">
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
+<img src="/screenshots/verticalbuttonsDialog.png" align = "right" height = "250" alt="alert dialog flutter">
 
 ```dart 
 BasicAlertBox(
@@ -231,12 +258,17 @@ BasicAlertBox(
     buttonsPosition: ButtonsPosition.VERTICAL,
 ).show(context: context);
 ```
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
 
 #### StackAlertBox
 
 The second type is a StackAlertBox, you can modify the _circleColor_ parameter to appear or ignore it to have a popup widget instead.
 
-<img src="/screenshots/stackAlert1.png" align = "right" height = "350" alt="alert dialog flutter">
+<img src="/screenshots/stackAlert1.png" align = "left" height = "300" alt="alert dialog flutter">
 
 ```dart 
 StackAlertBox(
@@ -258,8 +290,12 @@ StackAlertBox(
     buttonsPosition: ButtonsPosition.VERTICAL,
 ).show(context: context);
 ```
-
-<img src="/screenshots/stackAlert2.png" align = "right" height = "350" alt="alert dialog flutter">
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
+<img src="/screenshots/stackAlert2.png" align = "right" height = "290" alt="alert dialog flutter">
 
 ```dart 
 //a dialog with popup png image from network
@@ -278,10 +314,15 @@ StackAlertBox(
 ).show(context: context);
 ```
 
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
 
 ## Input Fields :
 
-<img src="/screenshots/Entry.png" align = "right" height = "350" alt="input field flutter">
+<img src="/screenshots/Entry.png" align = "right" height = "150" alt="input field flutter">
 
 ```dart 
 Entry(
@@ -303,7 +344,11 @@ Entry(
     outlineThikness: 2,
 ),
 ```
-
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
 
 ## Dropdowns :
 
@@ -313,8 +358,10 @@ To add items to your dropdown, you fill the _list_ field with an array of Item. 
 
 The MaterialDropdown class is a simple copy of dropdown from Material, but it isn't customizable too much. Also, the menu doesn't appear below the dropdown button. 
 
-<img src="/screenshots/Materialdropdown.png" align = "right" height = "350" alt="dropdown flutter">
-<img src="/screenshots/MaterialdropdownOpened.png" align = "right" height = "350" alt="dropdown flutter">
+
+<img src="/screenshots/Materialdropdown.png" align = "left" height = "50" alt="dropdown flutter">
+
+<br/>
 
 ```dart 
 MaterialDropdown(
@@ -332,12 +379,17 @@ MaterialDropdown(
     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
 ),
 ```
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
 
 #### ClassicDropdown
 
 I created ClassicDropdown that allows you to list items and appear under the button based on this [stackoverflow answer.](https://stackoverflow.com/a/59859741/12802591).
 
-<img src="/screenshots/ClassicDropdown.png" align = "right" height = "350" alt="dropdown flutter">
+<img src="/screenshots/ClassicDropdown.png" align = "right" height = "250" alt="dropdown flutter">
 
 ```dart 
 ClassicDropdown(
@@ -356,13 +408,19 @@ ClassicDropdown(
     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
 ),
 ```
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/> 
 
 #### MaterialPopup
 
 This a customizable button with a popup menu. The items are an array of Strings.
 
-<img src="/screenshots/MaterialPopup.png" align = "right" height = "350" alt="dropdown flutter">
-<img src="/screenshots/MaterialPopupItem.png" align = "right" height = "350" alt="dropdown flutter">
+<img src="/screenshots/MaterialPopup.png" align = "left" height = "150" alt="dropdown flutter">
+
+<br/>
 
 ```dart 
 MaterialPopup(  
@@ -377,13 +435,18 @@ MaterialPopup(
     items: ["One","Two", "Three"],
 ),
 ```
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
 
 #### DotsMenu
 
 This dots dropdown menu is fully customizable. You can change dots color, alignment. Also the width, height, border radius, the background and outline color of the menu. 
-You can add items and change color of icons and style of texts.  
+You can add items and change color of icons and style of texts. Note: the list of items is scrollable.
 
-<img src="/screenshots/DotsMenu.png" align = "right" height = "350" alt="dropdown flutter">
+<img src="/screenshots/DotsMenu.png" align = "right" height = "330" alt="dropdown flutter">
 
 ```dart 
 DotsMenu(
@@ -407,12 +470,17 @@ DotsMenu(
     },
 ),
 ```
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
 
 #### AwesomeMenu
 
 This is the last dropdown. You can replace the bell icon and customize the items and the menu.
 
-img src="/screenshots/AwesomeMenu.png" align = "right" height = "350" alt="dropdown flutter">
+<img src="/screenshots/AwesomeMenu.png" align = "right" height = "250" alt="dropdown flutter">
 
 ```dart 
 AwesomeMenu(
@@ -428,7 +496,11 @@ AwesomeMenu(
     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
 ),
 ```
-
+<br/>
+<div align="right">
+    <b><a href="#table-of-content-">↥ back to top</a></b>
+</div>
+<br/>
 
 ## License :
 
