@@ -359,9 +359,7 @@ To add items to your dropdown, you fill the _list_ field with an array of Item. 
 The MaterialDropdown class is a simple copy of dropdown from Material, but it isn't customizable too much. Also, the menu doesn't appear below the dropdown button. 
 
 
-<img src="/screenshots/Materialdropdown.png" align = "left" height = "50" alt="dropdown flutter">
-
-<br/>
+<img src="/screenshots/Materialdropdown.png" align = "left" height = "270" alt="dropdown flutter">
 
 ```dart 
 MaterialDropdown(
@@ -418,9 +416,7 @@ ClassicDropdown(
 
 This a customizable button with a popup menu. The items are an array of Strings.
 
-<img src="/screenshots/MaterialPopup.png" align = "left" height = "150" alt="dropdown flutter">
-
-<br/>
+<img src="/screenshots/MaterialPopup.png" align = "left" height = "250" alt="dropdown flutter">
 
 ```dart 
 MaterialPopup(  
@@ -480,7 +476,7 @@ DotsMenu(
 
 This is the last dropdown. You can replace the bell icon and customize the items and the menu.
 
-<img src="/screenshots/AwesomeMenu.png" align = "right" height = "250" alt="dropdown flutter">
+<img src="/screenshots/AwesomeMenu.png" align = "left" height = "250" alt="dropdown flutter">
 
 ```dart 
 AwesomeMenu(
