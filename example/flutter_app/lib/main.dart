@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutteruipackage/flutteruipackage.dart';
+import 'buttons_usecases.dart';
 import 'dialogs_usecases.dart';
 import 'dropdown_usecases.dart';
 import 'inputs_usecases.dart';
@@ -28,7 +29,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    TextStyle text = new TextStyle(
+    TextStyle textstyle = new TextStyle(
         fontSize: 18, fontWeight: FontWeight.w300, color: Colors.white);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -39,7 +40,21 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             Text(
-              'A demo for Custom Buttons & other widgets',
+              'A demo for Custom UI widgets',
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            BFilled(
+              width: 200,
+              height: 50,
+              text: "Buttons",
+              textStyle: textstyle,
+              backgroundColor: Colors.blue,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyButtons()));
+              },
             ),
             SizedBox(
               height: 10,
@@ -48,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 200,
               height: 50,
               text: "Alert Dialogs",
-              textStyle: text,
+              textStyle: textstyle,
               backgroundColor: Colors.blue,
               onPressed: () {
                 Navigator.push(context,
@@ -62,12 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 200,
               height: 50,
               text: "Input Fields",
-              alignment: Position.LEFT,
-              textStyle: text,
+              textStyle: textstyle,
               backgroundColor: Colors.blue,
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyInputs()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyInputs()));
               },
             ),
             SizedBox(
@@ -77,33 +91,15 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 200,
               height: 50,
               text: "Dropdowns",
-              backgroundColor: Colors.teal,
+              textStyle: textstyle,
+              backgroundColor: Colors.blue,
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyDrops()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyDrops()));
               },
             ),
             SizedBox(
               height: 10,
-            ),
-            BRaised(
-              width: 200,
-              height: 50,
-              text: "Custom Dropdowns",
-              backgroundColor: Colors.teal,
-              onPressed: () {},
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            BFilled(
-              width: 200,
-              height: 50,
-              icon: Icons.done,
-              iconSize: 20,
-              text: "other Widgets",
-              backgroundColor: Colors.green,
-              onPressed: () {},
             ),
           ],
         ),

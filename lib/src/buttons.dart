@@ -105,7 +105,7 @@ class BOutlined extends StatelessWidget {
     this.height= 50,
     this.radius = 7,
     this.text = "",
-    this.textStyle= const TextStyle(fontSize: 18 , fontWeight: FontWeight.w700, color: Colors.white),
+    this.textStyle= const TextStyle(fontSize: 18 , fontWeight: FontWeight.w700, color: Colors.black),
     this.backgroundColor= Colors.transparent,
     this.icon,
     this.iconColor= Colors.blue,

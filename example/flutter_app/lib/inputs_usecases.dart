@@ -19,15 +19,17 @@ class _MyInputsState extends State<MyInputs> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Entry1(
+            Entry(
               title: "Username",
               hint: "username",
               isPassword: false,
               outlineColor: Colors.blue,
-              radius: 10,
-              outlineThikness: 4,
+              radius: 0,
+              outlineThikness: 1,
+              cursorColor: Colors.orange,
+              inputStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
-            Entry1(
+            Entry(
               title: "Password",
               hint: "********",
               isPassword: true,

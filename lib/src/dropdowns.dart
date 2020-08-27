@@ -8,14 +8,14 @@ enum Dots{
 
 // ---------------- Classic Dropdown from material
 // using customdropdown.dart (from stackoverflow)
-// to have dropdown list under button ---------------
-// doesn't word when the list get longer
+// to persist the dropdown list under button -----------
+// doesn't work when the list get longer
 class ClassicDropdown extends StatefulWidget {
   List<Item> list;
   String hint;
   Color outlineColor;
   Color backgroundColor, boxColor;
-  double borderRadius, borderThickness, iconSize;
+  double width, borderRadius, borderThickness, iconSize;
   TextStyle style;
   Widget icon;
   ClassicDropdown({
@@ -24,6 +24,7 @@ class ClassicDropdown extends StatefulWidget {
     this.borderRadius = 10,
     this.iconSize = 40,
     this.icon ,
+    this.width = 200,
     this.boxColor = Colors.white,
     this.outlineColor = Colors.white,
     this.hint = "Select",
@@ -40,6 +41,7 @@ class _CdropState extends State<ClassicDropdown> {
   @override
   Widget build(BuildContext context) {
     return new Container(
+      width: widget.width,
       //padding: EdgeInsets.only(left: 10),
       decoration: BoxDecoration(
           color: widget.boxColor,
@@ -186,8 +188,8 @@ class Item {
 }
 //-----------------------------------------
 
-//-----------Scrollable PopupMenu-------------------
-class PopupMenu extends StatefulWidget {
+//-----------Scrollable PopupMenu with dots-------------------
+class DotsMenu extends StatefulWidget {
   Dots dots ;
   List<Item> items;
   double width, height, borderRadius, dotsSize;
@@ -196,7 +198,7 @@ class PopupMenu extends StatefulWidget {
   ValueChanged<int> onChange;
   TextStyle style;
 
-  PopupMenu({
+  DotsMenu({
     Key key,
     this.items,
     this.dotsSize=30,
@@ -213,9 +215,9 @@ class PopupMenu extends StatefulWidget {
     this.onChange,
   });
   @override
-  _PopupMenuState createState() => _PopupMenuState();
+  _DotsMenuState createState() => _DotsMenuState();
 }
-class _PopupMenuState extends State<PopupMenu> {
+class _DotsMenuState extends State<DotsMenu> {
   GlobalKey _key;
   bool isMenuOpen = false;
   Offset buttonPosition;
@@ -473,7 +475,7 @@ class _AwesomeMenuState extends State<AwesomeMenu> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 19.0),
                     child: ConstrainedBox(
                       constraints: new BoxConstraints(
                         maxHeight: widget.height,
@@ -600,9 +602,13 @@ class _MaterialPopupState extends State<MaterialPopup> {
           borderRadius: BorderRadius.circular(widget.borderRadius),
           border: Border.all(color: widget.outlineColor, width: 2),
         ),
-        child:  Text(
-          _selection == null ? widget.text : _selection.toString(),
-          style: widget.style,
+        child:  Align(
+          alignment: Alignment.center,
+          child: Text(
+            _selection == null ? widget.text : _selection.toString(),
+           // textAlign: TextAlign.center,
+            style: widget.style,
+          ),
         ),
       ),
       itemBuilder: (BuildContext context) {
